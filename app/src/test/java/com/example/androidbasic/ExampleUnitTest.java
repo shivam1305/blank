@@ -1,4 +1,4 @@
-package com.example.blank;
+package com.example.androidbasic;
 
 import org.junit.Test;
 

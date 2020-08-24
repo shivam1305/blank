@@ -1,16 +1,13 @@
-package com.example.blank;
+package com.example.androidbasic;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-
-import java.util.List;
+import androidx.navigation.fragment.NavHostFragment;
 
 public class SecondFragment extends Fragment {
 
@@ -26,11 +23,12 @@ public class SecondFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Spinner spinnercourses= view.findViewById(R.id.spinner_courses);
-
-        List<CourseInfo> courses=DataManager.getInstance().getCourses();
-        ArrayAdapter<CourseInfo> adaptercourses=new ArrayAdapter<>(getActivity(),android.R.layout.simple_spinner_item,courses);
-        adaptercourses.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnercourses.setAdapter(adaptercourses);
+        view.findViewById(R.id.button_second).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(SecondFragment.this)
+                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
+            }
+        });
     }
 }
